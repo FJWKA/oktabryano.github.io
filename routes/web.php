@@ -2,29 +2,18 @@
 
 // routes/web.php
 
+use App\Http\Controllers\ManajemenController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/pemasukan', function () {
-    return view('pemasukan');
-})->name('pemasukan');
+Route::get('/pemasukan', [ManajemenController::class, 'showPemasukan'])->name('pemasukan.index');
 
-Route::post('/pemasukan', function () {
-    // Proses penyimpanan data pemasukan
-    return view('manajemen'); // Ganti 'manajemen' dengan nama view halaman utama Anda
-})->name('manajemen');
+Route::post('/pemasukan', [ManajemenController::class, 'storePemasukan'])->name('pemasukan.index');
 
-Route::get('/pengeluaran', function () {
-    return view('pengeluaran');
-})->name('pengeluaran');
+Route::get('/pengeluaran', [ManajemenController::class, 'showPengeluaran'])->name('pengeluaran.index');
+Route::post('/pengeluaran', [ManajemenController::class, 'storePengeluaran'])->name('pengeluaran.store');
 
-Route::post('/pengeluaran', function () {
-    // Proses penyimpanan data pengeluaran
-    return view('manajemen'); // Ganti 'manajemen' dengan nama view halaman utama Anda
-})->name('manajemen');
+Route::get('/manajemen', [ManajemenController::class, 'index'])->name('manajemen.index');
 
-Route::get('/manajemen', function () {
-    return view('manajemen');
-});
 
 use App\Http\Controllers\TransactionController;
 
